@@ -17,4 +17,6 @@ Going forward, AI algorithms will be incorporated into more and more everyday ap
 
 In this project, I trained an image classifier to recognize different species of flowers. You can imagine using something like this in a phone app that tells you the name of the flower your camera is looking at. In practice one would train this classifier, then export it for use in application. We'll be using this dataset of 102 flower categories
 
+[Project Notebook: Image Classifier](https://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%202%20-%20Image%20Classifier%20Application/Image%20Classifier%20Project.ipynb)
+
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
