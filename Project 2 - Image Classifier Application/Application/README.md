@@ -42,4 +42,4 @@ Keeps the training session from being timed out
 
 #### **checkpoints** - saves different model checkpoints
 
-Directory where the trained model will be saved to 
+Directory where the trained model will be saved to. The pretrained weights could not be uploaded due to file size limits
