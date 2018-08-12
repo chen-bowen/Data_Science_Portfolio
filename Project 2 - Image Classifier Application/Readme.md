@@ -17,6 +17,7 @@ The data for this project is quite large - in fact, it is so large you cannot up
 
 This notebook implements the inception model in the jupyter notebook format. Most of the functions are static. To view the notebook, go to the following link
 
+[Project Notebook: Image Classifier](http://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%202%20-%20Image%20Classifier%20Application/Image%20Classifier%20Project.ipynb?flush_cache=true)
 
 ### Application
 
