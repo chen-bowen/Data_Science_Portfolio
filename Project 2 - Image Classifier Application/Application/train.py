@@ -8,7 +8,7 @@ def main():
                           'hidden_units' : args.hidden_units, 'learning_rate': args.learning_rate, 
                          'dropout_prob': args.dropout_prob}
         
-     model = train_model(hyperparameters, data_dir= 'flowers', device = args.gpu)
+     train_model(hyperparameters, data_dir= args.data_directory, save_dir = args.save_dir, device = args.gpu)
      return model
 if __name__ == '__main__':
     model = main()
