@@ -1,7 +1,7 @@
 
 # Supervised Learning (Cited From Udacity)
 
-## Project: Finding Donors for CharityML
+### Project: Finding Donors for CharityML
 
 ### Install
 
