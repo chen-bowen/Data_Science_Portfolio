@@ -4,7 +4,8 @@
 
 The whole interface contains 5 files and 1 folder,
 
-**train.py** - training interface
+
+#### **train.py** - training interface
 
 Basic usage: python train.py data_directory
 
@@ -16,7 +17,8 @@ Options:
 * Set hyperparameters: python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20
 * Use GPU for training: python train.py data_dir --gpu
 
-**predict.py** - predicting interface
+
+#### **predict.py** - predicting interface
 
 
 Basic usage: python predict.py /path/to/image checkpoint Options:
@@ -26,18 +28,18 @@ Basic usage: python predict.py /path/to/image checkpoint Options:
 * Use GPU for inference: python predict.py input checkpoint --gpu
 
 
-**model_spec.py** - utitity functions
+#### **model_spec.py** - utitity functions
 
 Provides all helper functions that **train.py** and **predict.py** uses. The main train and predict functions are implemented here
 
-**cat_to_json.json** - categories name mapping
+#### **cat_to_json.json** - categories name mapping
 
 Provides the encoding of 102 flower classes
 
-**workspace_utils.py** - active session
+#### **workspace_utils.py** - active session
 
 Keeps the training session from being timed out
 
-**checkpoints** - saves different model checkpoints
+#### **checkpoints** - saves different model checkpoints
 
 Directory where the trained model will be saved to 
