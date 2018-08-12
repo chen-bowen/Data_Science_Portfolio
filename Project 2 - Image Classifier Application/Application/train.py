@@ -9,6 +9,5 @@ def main():
                          'dropout_prob': args.dropout_prob}
         
      train_model(hyperparameters, data_dir= args.data_directory, save_dir = args.save_dir, device = args.gpu)
-     return model
 if __name__ == '__main__':
-    model = main()
+    main()
