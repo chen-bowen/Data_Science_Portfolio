@@ -12,7 +12,7 @@ from collections import OrderedDict # use dict, but we have to keep the order
 import matplotlib.pyplot as plt
 
 # ================= Train Model Functions =====================
-def train_model(hyperparameters, data_dir= 'flowers', device = 'cuda'):
+def train_model(hyperparameters, data_dir, save_dir, device):
     """Train the neural network, called in main function utilize the following helper functions,
     """
     
@@ -62,7 +62,7 @@ def train_model(hyperparameters, data_dir= 'flowers', device = 'cuda'):
                 running_loss = 0
                 model_spec['model'].train()
                 
-    saveModel(image_dataset, model_spec['model'])
+    saveModel(image_dataset, model_spec['model'], model_spec['classifier'], save_dir)
     return model_spec['model']
 
 def get_model(architecture):
@@ -166,7 +166,8 @@ def buildNeuralNetwork(model, hyperparameters,  data_dir, device = 'cuda'):
         
     # Important: Send model to use gpu cuda
     model = model.to(device)
-    model_spec = {'model': model, 'criterion': criterion, 'optimizer': optimizer}
+    model_spec = {'model': model, 'criterion': criterion,
+                  'optimizer': optimizer, 'classifier':classifier}
     
     return model_spec
 
@@ -188,16 +189,17 @@ def evaluate_performance_batch(model,batch, criterion, device = 'cuda'):
         
     return correct, total
         
-def saveModel(image_dataset, model):
+def saveModel(image_dataset, model, classifier, save_dir):
     # Saves the pretrained model
     with active_session():
-        check_point_file = model.arch +  '_checkpoint.pth'
+        check_point_file = save_dir + model.arch +  '_checkpoint.pth'
     model.class_to_idx =  image_dataset['train'].class_to_idx
 
     checkpoint_dict = {
         'architecture': 'inception_v3',
         'class_to_idx': model.class_to_idx, 
-        'state_dict': model.state_dict()
+        'state_dict': model.state_dict(),
+        'classifier': classifier
     }
     torch.save(checkpoint_dict, check_point_file)
     print("Model saved")
@@ -224,7 +226,7 @@ def predict(image_path, checkpoint_path, category_names, device = 'cuda', topk=5
     top_k_idx =  predict_prob.argsort()[-topk:][::-1]
     probs =  predict_prob[top_k_idx]
     classes = np.array(list(range(1, 102)))[top_k_idx]
-    visualize_pred(image, model, cat_to_name, topk)
+    visualize_pred(image, model, probs, classes, cat_to_name, topk)
     
     return probs, classes
 
@@ -232,6 +234,11 @@ def load_model_checkpoint(path):
     """Load model checkpoint given path"""
     checkpoint = torch.load(path, map_location={'cuda:0': 'cpu'})
     model, resize_aspect = get_model(checkpoint['architecture'])
+    if model.arch == 'inception_v3':
+        model.fc = checkpoint['classifier']
+    else: 
+        model.classifier = checkpoint['classifier']
+        
     model.load_state_dict(checkpoint['state_dict'])
     model.class_to_idx = checkpoint['class_to_idx']
     return model, resize_aspect
@@ -288,11 +295,9 @@ def imshow2(image, ax=None, title=None):
     return ax
 
 # Display an image along with the top 5 classes
-def visualize_pred(image, model, cat_to_name, topk):
+def visualize_pred(image, model, probs, classes, cat_to_name, topk):
     """ Visualize the top k probabilities an image is predicted as"""
     im = process_image(image) 
-    # Get predicted class names from predict function
-    probs, classes = predict(image, model)
     flower_names = [cat_to_name[str(x)] for x in classes]
     
     # Build subplots above
