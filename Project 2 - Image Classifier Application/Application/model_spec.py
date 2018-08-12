@@ -207,7 +207,7 @@ def saveModel(image_dataset, model, classifier, save_dir):
 
 # ================= Predict Functions =====================
 
-def predict(image_path, checkpoint_path, category_names, device = 'cuda', topk=5):
+def predict(image_path, checkpoint_path, category_names, device, topk):
     ''' Predict the class (or classes) of an image using a trained deep learning model.
     '''
     # Implement the code to predict the class from an image file
