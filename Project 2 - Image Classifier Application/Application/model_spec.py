@@ -172,7 +172,7 @@ def buildNeuralNetwork(model, hyperparameters,  data_dir, device = 'cuda'):
 
 def evaluate_performance(model, dataloader,criterion, device = 'cuda'):
      # Evaluate performance for all batches in an epoch
-    performance = [evaluate_performance_batch(model, i, criterion) for i in iter(dataloader)]  # see evaluate_performance_batch function below
+    performance = [evaluate_performance_batch(model, i, criterion) for i in iter(dataloader)]  
     correct, total = list(map(sum, zip(*performance)))
     return correct/total
     
