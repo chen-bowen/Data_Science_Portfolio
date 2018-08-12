@@ -343,7 +343,7 @@ def get_input_args_predict():
     parser.add_argument('path_to_image', type=str, default=None,
                     help='image file to predict')
 
-    parser.add_argument('checkpoint', type=str, default=None,
+    parser.add_argument('checkpoint', type=str, default='checkpoints/inception_v3_checkpoint.pth',
                     help='path to checkpoint')
 
     parser.add_argument('--topk', type=int, default=5,
