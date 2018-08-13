@@ -94,23 +94,22 @@ def loadImageData(resize_aspect, data_dir):
     # Define transforms for the training, validation, and testing sets, using data augumentations on training set,
     # Inception_v3 has input size 299x299
     
-    train_transforms = transforms.Compose([transforms.Resize(resize_aspect[0]),
-                                           transforms.RandomRotation(30),
+    train_transforms = transforms.Compose([transforms.RandomRotation(30),
                                            transforms.RandomResizedCrop(resize_aspect[1]),
                                            transforms.RandomHorizontalFlip(),
                                            transforms.ToTensor(),
                                            transforms.Normalize([0.485, 0.456, 0.406], 
                                                                 [0.229, 0.224, 0.225])])
 
-    validation_transforms = transforms.Compose([transforms.Resize(resize_aspect[0]),
-                                                transforms.CenterCrop(resize_aspect[0]),
+    validation_transforms = transforms.Compose([transforms.Resize(resize_aspect[1]),
+                                                transforms.CenterCrop(resize_aspect[1]),
                                                transforms.ToTensor(),
                                                transforms.Normalize([0.485, 0.456, 0.406], 
                                                                     [0.229, 0.224, 0.225])])
 
 
-    test_transforms = transforms.Compose([transforms.Resize(resize_aspect[0]),
-                                          transforms.CenterCrop(resize_aspect[0]),
+    test_transforms = transforms.Compose([transforms.Resize(resize_aspect[1]),
+                                          transforms.CenterCrop(resize_aspect[1]),
                                           transforms.ToTensor(),
                                           transforms.Normalize([0.485, 0.456, 0.406], 
                                                                [0.229, 0.224, 0.225])])
