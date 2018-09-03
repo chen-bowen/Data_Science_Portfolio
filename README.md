@@ -19,4 +19,16 @@ In this project, I trained an image classifier to recognize different species of
 
 [Project Notebook: Image Classifier](http://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%202%20-%20Image%20Classifier%20Application/Image%20Classifier%20Project.ipynb?flush_cache=true)
 
+
+### Project 3 - Identifying Customers Segmentations
+
+**Description:** 
+
+In this project, I applied unsupervised learning techniques to identify segments of the population that form the core customer base for a mail-order sales company in Germany. These segments can then be used to direct marketing campaigns towards audiences that will have the highest expected rate of returns. The data that you will use has been provided by our partners at Bertelsmann Arvato Analytics, and represents a real-life data science task.
+
+First, the general demographics data are clustered through a KMeans clustering algorithms, then the same parameters are applied over the customer dataset to investigate if the customers are following the same distributions.
+
+[Project Notebook: Customer Segmentations](http://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%203%20-%20Identify%20Customer%20Segementation/Identify_Customer_Segments.ipynb)
+
+
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
