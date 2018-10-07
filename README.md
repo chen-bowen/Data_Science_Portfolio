@@ -31,6 +31,7 @@ First, the general demographics data are clustered through a KMeans clustering a
 [Project Notebook: Customer Segmentations](http://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%203%20-%20Identify%20Customer%20Segementation/Identify_Customer_Segments.ipynb?flush_cache=true)
 
 
+
 ### Project 4 - Data Science Blog
 
 **Description:** 
