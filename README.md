@@ -31,4 +31,12 @@ First, the general demographics data are clustered through a KMeans clustering a
 [Project Notebook: Customer Segmentations](http://nbviewer.jupyter.org/github/chenbowen184/Udacity_Data_Science_Projects/blob/master/Project%203%20-%20Identify%20Customer%20Segementation/Identify_Customer_Segments.ipynb?flush_cache=true)
 
 
+### Project 4 - Data Science Blog
+
+**Description:** 
+
+In this project, I analyzed the 2011 - 2018 Stack Overflow developer survey data in order to create a blog post regarding a comprehensive study of data science careers. The project notebook could be found below
+
+[Project Notebook: Understanding the Career of Data Scientists](http://nbviewer.jupyter.org/github/chenbowen184/Data_Scientist_Nanodegree/blob/master/Project%204%20-%20Data%20Science%20Blog/Understanding%20the%20Career%20of%20Data%20Scientists.ipynb)
+
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
