@@ -1,4 +1,4 @@
-# Data Science Blog
+# Understanding Data Scientist Careers in a Data Science Way
 
 **Project Motivation**
 
