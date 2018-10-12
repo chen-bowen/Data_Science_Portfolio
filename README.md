@@ -1,4 +1,4 @@
-# Udacity Data Scienist Nanodegree Projects
+# Data Science Portfolio Projects
 
 ### Project 1 - Predicting Donors' Income using supervised learning
 
