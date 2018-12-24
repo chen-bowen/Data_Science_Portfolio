@@ -46,6 +46,10 @@ In this project, I analyzed the 2011 - 2018 Stack Overflow developer survey data
 
 **Description:**
 
+In this project, I built a data transformation - machine learning pipeline that is capable to curate the class of the messages. The pipeline is eventually built into a flask application. The project notebook could be found below
+
+[Project Notebook: ETL] (http://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Project%205%20-%20Disaster%20Response%20Pipeline/ETL%20Pipeline%20Preparation.ipynb)\
+[Prject Notebook: Machine Learning Pipeline] (http://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Project%205%20-%20Disaster%20Response%20Pipeline/ML%20Pipeline%20Preparation.ipynb)
 
 
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
