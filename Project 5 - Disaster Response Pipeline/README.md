@@ -26,3 +26,5 @@ The project contains the following files,
     `python run.py`
 
 3. Go to http://localhost:3001/
+
+![Webapp Screenshot](https://raw.githubusercontent.com/chenbowen184/Data_Science_Portfolio/master/Project%205%20-%20Disaster%20Response%20Pipeline/app/webapp%20screenshot.png)
