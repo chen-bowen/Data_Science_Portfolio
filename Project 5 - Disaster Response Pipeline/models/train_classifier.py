@@ -1,8 +1,10 @@
 import sys
 import pandas as pd
 import numpy as np
+import pickle
 from sqlalchemy import create_engine
 import warnings
+
 # import NLP libraries
 warnings.filterwarnings("ignore")
 import re
@@ -20,9 +22,19 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 
 def load_data(database_filepath):
+    """
+        Load data from the sqlite database. 
+    Args: 
+        database_filepath: the path of the database file
+    Returns: 
+        X (DataFrame): messages 
+        Y (DataFrame): One-hot encoded categories
+        category_names (List)
+    """
+    
     # load data from database
-    engine = create_engine('sqlite:///Messages.db')
-    df = pd.read_sql_table('Messages', engine)
+    engine = create_engine('sqlite:///../data/DisasterResponse.db')
+    df = pd.read_sql_table('DisasterResponse', engine)
     X = df['message']
     Y = df.drop(['id', 'message', 'original', 'genre'], axis=1)
     category_names = Y.columns
@@ -30,6 +42,17 @@ def load_data(database_filepath):
     return X, Y, category_names
 
 def tokenize(text):
+    """
+        Tokenize the message into word level features. 
+        1. replace urls
+        2. convert to lower cases
+        3. remove stopwords
+        4. strip white spaces
+    Args: 
+        text: input text messages
+    Returns: 
+        cleaned tokens(List)
+    """   
     # Define url pattern
     url_re = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     
@@ -45,11 +68,23 @@ def tokenize(text):
     # save cleaned tokens
     clean_tokens = [lemmatizer.lemmatize(tok).lower().strip() for tok in tokens]
     
+    # remove stopwords
+    STOPWORDS = list(set(stopwords.words('english')))
+    clean_tokens = [token for token in clean_tokens if token not in STOPWORDS]
+    
     return clean_tokens
 
 
 def build_model():    
-    # build NLP pipeline - count words, tf-idf, multiple output classifier
+    """
+      build NLP pipeline - count words, tf-idf, multiple output classifier,
+      grid search the best parameters
+    Args: 
+        None
+    Returns: 
+        cross validated classifier object
+    """   
+    # 
     pipeline = Pipeline([
         ('vec', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -66,15 +101,25 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+        Evaluate the model performances, in terms of f1-score, precison and recall
+    Args: 
+        model: the model to be evaluated
+        X_test: X_test dataframe
+        Y_test: Y_test dataframe
+        category_names: category names list defined in load data
+    Returns: 
+        perfomances (DataFrame)
+    """   
     # predict on the X_test
     y_pred = model.predict(X_test)
     
     # build classification report on every column
     performances = []
     for i in range(len(category_names)):
-        performances.append([f1_score(y_test.iloc[:, i].values, y_pred[:, i], average='micro'),
-                             precision_score(y_test.iloc[:, i].values, y_pred[:, i], average='micro'),
-                             recall_score(y_test.iloc[:, i].values, y_pred[:, i], average='micro')])
+        performances.append([f1_score(Y_test.iloc[:, i].values, y_pred[:, i], average='micro'),
+                             precision_score(Y_test.iloc[:, i].values, y_pred[:, i], average='micro'),
+                             recall_score(Y_test.iloc[:, i].values, y_pred[:, i], average='micro')])
     # build dataframe
     performances = pd.DataFrame(performances, columns=['f1 score', 'precision', 'recall'],
                                 index = category_names)   
@@ -82,7 +127,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
-    pickle.dump(pipeline_improved, open(model_filepath, 'wb'))
+    """
+        Save model to pickle
+    """
+    pickle.dump(model, open(model_filepath, 'wb'))
 
 
 def main():
