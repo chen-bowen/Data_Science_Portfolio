@@ -3,15 +3,9 @@ import pandas as pd
 import numpy as np
 import pickle
 from sqlalchemy import create_engine
-import warnings
 
-# import NLP libraries
-warnings.filterwarnings("ignore")
-import re
-import nltk 
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem.wordnet import WordNetLemmatizer
+# import tokenize_function
+from models.tokenizer_function import Tokenizer
 
 # import sklearn
 from sklearn.pipeline import Pipeline
@@ -20,6 +14,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.externals import joblib
 
 def load_data(database_filepath):
     """
@@ -41,39 +36,6 @@ def load_data(database_filepath):
     
     return X, Y, category_names
 
-def tokenize(text):
-    """
-        Tokenize the message into word level features. 
-        1. replace urls
-        2. convert to lower cases
-        3. remove stopwords
-        4. strip white spaces
-    Args: 
-        text: input text messages
-    Returns: 
-        cleaned tokens(List)
-    """   
-    # Define url pattern
-    url_re = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
-    
-    # Detect and replace urls
-    detected_urls = re.findall(url_re, text)
-    for url in detected_urls:
-        text = text.replace(url, "urlplaceholder")
-    
-    # tokenize sentences
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
-    
-    # save cleaned tokens
-    clean_tokens = [lemmatizer.lemmatize(tok).lower().strip() for tok in tokens]
-    
-    # remove stopwords
-    STOPWORDS = list(set(stopwords.words('english')))
-    clean_tokens = [token for token in clean_tokens if token not in STOPWORDS]
-    
-    return clean_tokens
-
 
 def build_model():    
     """
@@ -86,18 +48,19 @@ def build_model():
     """   
     # 
     pipeline = Pipeline([
-        ('vec', CountVectorizer(tokenizer=tokenize)),
+        ('tokenizer', Tokenizer()),
+        ('vec', CountVectorizer()),
         ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(RandomForestClassifier()))
+        ('clf', MultiOutputClassifier(AdaBoostClassifier(n_estimators = 100)))
     ])
     
-    # grid search
-    parameters = {'clf__estimator__max_features':['sqrt', 0.5],
-              'clf__estimator__n_estimators':[50, 100]}
+    # # grid search
+    # parameters = {'clf__estimator__max_features':['sqrt', 0.5],
+    #           'clf__estimator__n_estimators':[50, 100]}
 
-    cv = GridSearchCV(estimator=pipeline, param_grid = parameters, cv = 5, n_jobs = 10)
+    # cv = GridSearchCV(estimator=pipeline, param_grid = parameters, cv = 5, n_jobs = 10)
    
-    return cv
+    return pipeline
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
@@ -130,7 +93,7 @@ def save_model(model, model_filepath):
     """
         Save model to pickle
     """
-    pickle.dump(model, open(model_filepath, 'wb'))
+    joblib.dump(model, open(model_filepath, 'wb'))
 
 
 def main():
