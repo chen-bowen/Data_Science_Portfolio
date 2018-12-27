@@ -51,7 +51,7 @@ def build_model():
         ('tokenizer', Tokenizer()),
         ('vec', CountVectorizer()),
         ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(AdaBoostClassifier(n_estimators = 100)))
+        ('clf', MultiOutputClassifier(RandomForestClassifier(n_estimators = 100)))
     ])
     
     # grid search
