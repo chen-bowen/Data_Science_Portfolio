@@ -54,13 +54,13 @@ def build_model():
         ('clf', MultiOutputClassifier(AdaBoostClassifier(n_estimators = 100)))
     ])
     
-    # # grid search
-    # parameters = {'clf__estimator__max_features':['sqrt', 0.5],
-    #           'clf__estimator__n_estimators':[50, 100]}
+    # grid search
+    parameters = {'clf__estimator__max_features':['sqrt', 0.5],
+              'clf__estimator__n_estimators':[50, 100]}
 
-    # cv = GridSearchCV(estimator=pipeline, param_grid = parameters, cv = 5, n_jobs = 10)
+    cv = GridSearchCV(estimator=pipeline, param_grid = parameters, cv = 5, n_jobs = 10)
    
-    return pipeline
+    return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
