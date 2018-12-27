@@ -7,6 +7,8 @@ import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
 class Tokenizer(BaseEstimator, TransformerMixin):
+    """ Tokenize transformer to be used in the pipeline
+    """
     def __init__(self):
         pass
 
