@@ -27,9 +27,9 @@ Example message to classify: "Help, Fire!"
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+    `python app.py`
 
-3. Go to http://localhost:3001/
+3. Go to http://127.0.0.1:5000/
 
 
 ![Webapp Screenshot](https://raw.githubusercontent.com/chenbowen184/Data_Science_Portfolio/master/Project%205%20-%20Disaster%20Response%20Pipeline/app/webapp%20screenshot.png)
