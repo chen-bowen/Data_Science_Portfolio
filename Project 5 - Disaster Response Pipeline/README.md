@@ -14,7 +14,11 @@ The project contains the following files,
 * app/templates/~.html: HTML pages for the web app.
 * run.py: Start the Python server for the web app and prepare visualizations.
 
-### Instructions:
+The app is now deployed on heroku at this [link](https://disaster-response-app184.herokuapp.com/)
+
+Example message to classify: "Help, Fire!"
+
+### Local Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -26,5 +30,6 @@ The project contains the following files,
     `python run.py`
 
 3. Go to http://localhost:3001/
+
 
 ![Webapp Screenshot](https://raw.githubusercontent.com/chenbowen184/Data_Science_Portfolio/master/Project%205%20-%20Disaster%20Response%20Pipeline/app/webapp%20screenshot.png)
