@@ -55,4 +55,13 @@ In this project, I built a data transformation - machine learning pipeline that 
 [Disaster Response App](https://disaster-response-app184.herokuapp.com/)
 
 
+### Project 6 - Recommendation System
+
+**Description:**
+
+In this project, I developed a recommendation engine's algorithm with IBM communities articles and user iteractions
+
+[Project Notebook: Recommendations with IBM](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Project%206%20-%20Reccomendation%20System/Recommendations_with_IBM.ipynb)
+
+
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
