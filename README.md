@@ -59,9 +59,19 @@ In this project, I built a data transformation - machine learning pipeline that 
 
 **Description:**
 
-In this project, I developed a recommendation engine's algorithm with IBM communities articles and user iteractions
+In this project, I developed a recommendation engine's algorithm with IBM communities articles and user interactions. This project will serve as a prototype of the recommender systems of the article recommendation systems of IBM. The project will be hosted on 
 
 [Project Notebook: Recommendations with IBM](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Project%206%20-%20Reccomendation%20System/Recommendations_with_IBM.ipynb)
+
+### Capstone Project - Spark Distributed Analytics
+
+**Description:**
+
+In the capstone project, I built a distributed machine learning for a user log using spark - the big data technology toolkit. The primary objective was to predict the churning possibilities of every user. Most of the data visualizations were completed on a small subset of the data, while the full dataset analytics were performed using AWS's EMR services.
+
+[Project Notebook: Spark - Full Dataset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Full%20Dataset.ipynb)
+
+[Project Notebook: Spark - Subset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Full%20Dataset.ipynb)
 
 
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
