@@ -71,7 +71,7 @@ In the capstone project, I built a distributed machine learning for a user log u
 
 [Project Notebook: Spark - Full Dataset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Full%20Dataset.ipynb)
 
-[Project Notebook: Spark - Subset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Full%20Dataset.ipynb)
+[Project Notebook: Spark - Subset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Subset%20Analytics.ipynb)
 
 
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
