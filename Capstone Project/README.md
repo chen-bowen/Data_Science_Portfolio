@@ -33,7 +33,11 @@ Using the user information logs, we will attempt to predict the possiblities of 
 * matplot
 * numpy
 
-# Gallery
+### Model Refinement
+
+The presented model represents the best model I have constructed so far. Originally I only used the all the activities in *page* as features, which yielded 0.69 F1 score on the small test set we have. After I engineered 6 other features as noted in the project, I was able to obtain an F1 score of 0.80 (0.88 after scale up to the large dataset).
+
+### Gallery
 
 
 [Project Notebook: Spark - Subset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Subset%20Analytics.ipynb)
