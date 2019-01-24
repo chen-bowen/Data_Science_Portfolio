@@ -73,5 +73,7 @@ In the capstone project, I built a distributed machine learning for a user log u
 
 [Project Notebook: Spark - Full Dataset Analytics](https://nbviewer.jupyter.org/github/chenbowen184/Data_Science_Portfolio/blob/master/Capstone%20Project/Spark%20-%20Full%20Dataset.ipynb)
 
+[Blog Post: Understanding Customer Churning with Big Data Analytics](https://medium.com/@bowenchen/understanding-customer-churning-with-big-data-analytics-70ce4eb17669)
+
 
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
