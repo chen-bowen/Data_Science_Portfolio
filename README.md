@@ -75,5 +75,6 @@ In the capstone project, I built a distributed machine learning for a user log u
 
 [Blog Post: Understanding Customer Churning with Big Data Analytics](https://medium.com/@bowenchen/understanding-customer-churning-with-big-data-analytics-70ce4eb17669)
 
+![Certificate](https://raw.githubusercontent.com/chenbowen184/Data_Science_Portfolio/master/Data%20Scientist%20Nanodegree%20certificate.jpg)
 
 **Disclaimer:** Remember to provide proper citation if you want to use any part of this code.
